@@ -14,36 +14,37 @@ public class AnimalRepository : IAnimalRepository
     public IEnumerable<Animal> GetAnimals()
     {
         // // Otwieramy połączenie
-        // using SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("Default"));
-        // connection.Open();
-        //
-        // // Defincja command
-        // SqlCommand command = new SqlCommand();
-        // command.Connection = connection;
-        // command.CommandText = "SELECT * FROM Animal";
-        //     
-        // // Wykonanie zapytania
-        // var reader = command.ExecuteReader();
-        //     
-        // List<Animal> animals = new List<Animal>();
-        //     
-        // int idAnimalOrdinal = reader.GetOrdinal("IdAnimal");
-        // int nameOrdinal = reader.GetOrdinal("Name");
-        // int descriptionOrdinal = reader.GetOrdinal("Description");
-        // int categoryOrdinal = reader.GetOrdinal("Category");
-        // int areaOrdinal = reader.GetOrdinal("Area");
-        //     
-        // while (reader.Read())
-        // {
-        //     animals.Add(new Animal()
-        //     {
-        //         IdAnimal = reader.GetInt32(idAnimalOrdinal),
-        //         Name = reader.GetString(nameOrdinal),
-        //         Description=reader.GetString(descriptionOrdinal),
-        //         Category = reader.GetString(categoryOrdinal),
-        //         Area = reader.GetString(areaOrdinal)
-        //     });
-        // }
+        using SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("Default"));
+        connection.Open();
+        
+        // Defincja command
+        SqlCommand command = new SqlCommand();
+        command.Connection = connection;
+        command.CommandText = "SELECT * FROM Animal";
+            
+        // Wykonanie zapytania
+        var reader = command.ExecuteReader();
+            
+        List<Animal> animals = new List<Animal>();
+            
+        int idAnimalOrdinal = reader.GetOrdinal("IdAnimal");
+        int NameOrdinal = reader.GetOrdinal("Name"); 
+        int DescriptionOrdinal = reader.GetOrdinal("Description");
+        int CategoryOrdinal = reader.GetOrdinal("Category"); 
+        int AreaOrdinal = reader.GetOrdinal("Area");
+
+            
+        while (reader.Read())
+        {
+            animals.Add(new Animal()
+            {
+                IdAnimal = reader.GetInt32(idAnimalOrdinal),
+                Name = reader.GetString(NameOrdinal),
+                Description = !reader.IsDBNull(DescriptionOrdinal) ? reader.GetString(DescriptionOrdinal) : null,
+                Category = reader.GetString(CategoryOrdinal),
+                Area = reader.GetString(AreaOrdinal)
+            });
+        }
 
         throw new NotImplementedException();
     }

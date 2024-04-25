@@ -20,7 +20,27 @@ namespace Tutorial5.Controllers;
         public IActionResult GetAnimals()
         {
             var animals = _animalService.GetAnimals();
-            return Ok(animals);
+            return Ok(animals.OrderBy(animal=>animal.Name));
+        }
+        
+        [HttpGet("{OrderBy}")]
+        public IActionResult GetSortedAnimals(string OrderBy)
+        {
+            var animal = _animalService.GetAnimals();
+            
+            switch (OrderBy)
+            {
+                case "Name" :
+                    return Ok(animal.OrderBy(a => a.Name));
+                case "Description":
+                    return Ok(animal.OrderBy(a => a.Description));
+                case "Category":
+                    return Ok(animal.OrderBy(a => a.Category));
+                case "Area":
+                    return Ok(animal.OrderBy(a => a.Area));
+                default:    
+                    return StatusCode(StatusCodes.Status403Forbidden); 
+            }
         }
 
 

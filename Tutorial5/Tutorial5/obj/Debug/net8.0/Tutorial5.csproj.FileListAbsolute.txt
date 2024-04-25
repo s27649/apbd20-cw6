@@ -1,5 +1,4 @@
 /Users/nastalusickaa/apbd20-cw6/Tutorial5/Tutorial5/bin/Debug/net8.0/appsettings.Development.json
-/Users/nastalusickaa/apbd20-cw6/Tutorial5/Tutorial5/bin/Debug/net8.0/appsettings.json
 /Users/nastalusickaa/apbd20-cw6/Tutorial5/Tutorial5/bin/Debug/net8.0/Tutorial5
 /Users/nastalusickaa/apbd20-cw6/Tutorial5/Tutorial5/bin/Debug/net8.0/Tutorial5.deps.json
 /Users/nastalusickaa/apbd20-cw6/Tutorial5/Tutorial5/bin/Debug/net8.0/Tutorial5.runtimeconfig.json
